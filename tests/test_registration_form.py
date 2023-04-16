@@ -12,6 +12,6 @@ def test_registration_form():
     browser.element('#userEmail').type('test@test.test')
     browser.element("#gender-radio-1").double_click()
     browser.element('#userNumber').type('78484884844')
-    browser.element()
+    browser.element('#dateOfBirthInput').
     browser.element()
     browser.element()
