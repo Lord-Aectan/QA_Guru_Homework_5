@@ -1,6 +1,5 @@
 from selene import browser, by, be, have, command
 import os
-# from tests.conftest import browser_open_page
 
 
 def test_registration_form():
@@ -20,3 +19,13 @@ def test_registration_form():
     browser.element('#state').click().with_().element('#react-select-3-option-0').click()
     browser.element('#city').click().with_().element('#react-select-4-option-0').click()
     browser.element('#submit').click()
+
+    # Проверяем корректность заполненных полей
+    browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
+    browser.all('tbody tr').should(have.exact_texts(
+        'Student Name Test Test2', 'Student Email test@test.test',
+        'Gender Male', 'Mobile 7848488484',
+        'Date of Birth 07 April,1990', 'Subjects Computer Science',
+        'Hobbies Reading', 'Picture Imp.jpg',
+        'Address Test adress', 'State and City NCR Delhi'
+    ))
